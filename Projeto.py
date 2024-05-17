@@ -5,6 +5,17 @@ class Receita:
         self.ingredientes = ""
         self.mododepreparo = ""
 
+#-----------= Cadastro =---------#
+def cadastrar_receita(lista_receitas):
+    os.system('cls')
+    receita = Receita()
+    receita.nome = input("\nDigite o nome da receita: ")
+    receita.paisdeorigem = input("Digite o país de origem: ")
+    receita.ingredientes = input("Digite os ingredientes: ")
+    receita.mododepreparo = input("Digite o modo de preparo: ")
+    lista_receitas.append(receita)
+    print("\nReceita cadastrada com sucesso!")
+    
 #-----------= Listas =---------------#
 lista_receitas = []
 Receitas_Fav = []
