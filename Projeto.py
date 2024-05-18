@@ -1,4 +1,7 @@
+
 import os
+
+#-----------= Funções do codigo(inicio) =-----------#
 
 class Receita:
     def __init__(self):
@@ -47,12 +50,15 @@ def visualisar_favoritos(lista_receitas):
     if len(Receitas_Fav) == 0:
         print("Ainda não existem receitas cadastradas nos favoritos")
     else:
-        for i, receitas in enumerate(Receitas_Fav, start = 1):
+        print("Favoritos:")
+        for i, receita in enumerate(Receitas_Fav, start = 1):
             print(f"{i}. Nome da receita: {receita.nome}")
             print(f"   País de origem: {receita.paisdeorigem}")
             print(f"   Ingredientes: {receita.ingredientes}")
             print(f"   Modo de preparo: {receita.mododepreparo}")
             print("-" * 30)
+            
+#-----------= Funções do codigo(Fim) =-----------#
     
 #-----------= Listas =---------------#
 
@@ -70,7 +76,9 @@ while True:
     print("5. Favoritar receita")
     print("6. Visualizar Favoritos")
     print("7. Sair")
+    
     opcao = input("\nDigite o número da opção desejada: ")
+    
     if opcao == "1":
         cadastrar_receita(lista_receitas)
     elif opcao == "2":
@@ -89,7 +97,7 @@ while True:
         visualisar_favoritos(Receitas_Fav)
     elif opcao == "7":
         print("\nEncerrando o programa. Até mais!")
-        break=
+        break
 
 
 
