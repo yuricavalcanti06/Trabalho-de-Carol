@@ -15,6 +15,25 @@ def cadastrar_receita(lista_receitas):
     receita.mododepreparo = input("Digite o modo de preparo: ")
     lista_receitas.append(receita)
     print("\nReceita cadastrada com sucesso!")
+#----------= Visualização =--------#
+def visualizar_receitas(lista_receitas):
+    os.system('cls')
+    if len(lista_receitas) == 0:
+        print("\nAinda não existem receitas cadastradas.")
+    else:
+        filtrar_pais = input("Deseja filtrar as receitas por país? (s/n): ")
+        if filtrar_pais.lower() == 's':
+            pais = input("Digite o país de origem das receitas que deseja visualizar: ") #TRY EXCEPT?
+            receitas_do_pais = [receita for receita in lista_receitas if receita.paisdeorigem.lower() == pais.lower()]
+            if len(receitas_do_pais) == 0:
+                print(f"\nAinda não existem receitas cadastradas do país {pais}.")
+            else:
+                for i, receita in enumerate(receitas_do_pais, start=1):
+                    print(f"{i}. Nome da receita: {receita.nome}")
+                    print(f"   País de origem: {receita.paisdeorigem}")
+                    print(f"   Ingredientes: {receita.ingredientes}")
+                    print(f"   Modo de preparo: {receita.mododepreparo}")
+                    print("-" * 30)
     
 #-----------= Listas =---------------#
 lista_receitas = []
