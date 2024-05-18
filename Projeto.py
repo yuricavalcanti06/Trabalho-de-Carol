@@ -52,7 +52,7 @@ def visualizar_receitas(lista_receitas):
 
 #-----------= Visualizar Favoritos =-----------#
 
-def visualizar_favoritos(lista_receitas):
+def visualizar_favoritos(Receitas_Fav):
     os.system('cls')
     if len(Receitas_Fav) == 0:
         print("Ainda não existem receitas cadastradas nos favoritos")
@@ -74,6 +74,18 @@ def favoritar_receita(lista_receitas):
         print("\nAinda não existem receitas cadastradas.")
     else:
         visualizar_receitas(lista_receitas)
+        indice = input("\nDigite o numero da receita que deseja favoritar: ")
+        if indice.isdigit():
+            indice = int(indice) - 1
+            if indice >=0 and indice < len(lista_receitas):
+                Receitas_Fav.append(lista_receitas[indice])
+                print("\nReceita adicionada com sucesso!")
+            else:
+                print("\nÍndice inválido. Nenhuma receita foi favoritada.")
+        else:
+            print("\nEntrada inválida. Nenhuma receita foi favoritada.")
+            
+        
    
 #-----------= Funções do codigo(Fim) =-----------#
     
