@@ -21,7 +21,7 @@ def cadastrar_receita(lista_receitas):
     receita.mododepreparo = input("Digite o modo de preparo: ")
     lista_receitas.append(receita)
     print("\nReceita cadastrada com sucesso!")
-    
+
 #-----------= Visualização =-----------#
 
 def visualizar_receitas(lista_receitas):
@@ -31,7 +31,7 @@ def visualizar_receitas(lista_receitas):
     else:
         filtrar_pais = input("Deseja filtrar as receitas por país? (s/n): ")
         if filtrar_pais.lower() == 's':
-            pais = input("Digite o país de origem das receitas que deseja visualizar: ") #TRY EXCEPT?
+            pais = input("Digite o país de origem das receitas que deseja visualizar: ")
             receitas_do_pais = [receita for receita in lista_receitas if receita.paisdeorigem.lower() == pais.lower()]
             if len(receitas_do_pais) == 0:
                 print(f"\nAinda não existem receitas cadastradas do país {pais}.")
@@ -49,7 +49,7 @@ def visualizar_receitas(lista_receitas):
                 print(f"   Ingredientes: {receita.ingredientes}")
                 print(f"   Modo de preparo: {receita.mododepreparo}")
                 print("-" * 30)
-
+   
 #-----------= Visualizar Favoritos =-----------#
 
 def visualizar_favoritos(Receitas_Fav):
@@ -105,30 +105,24 @@ while True:
     print("5. Favoritar receita")
     print("6. Visualizar Favoritos")
     print("7. Sair")
-    
     opcao = input("\nDigite o número da opção desejada: ")
-    
+
+
     if opcao == "1":
         cadastrar_receita(lista_receitas)
     elif opcao == "2":
-        lista_receitas = []
         visualizar_receitas(lista_receitas)
     elif opcao == "3":
-        lista_receitas = []
         atualizar_receita(lista_receitas)
     elif opcao == "4":
-        lista_receitas = []
         excluir_receita(lista_receitas)
     elif opcao == "5":
         favoritar_receita(lista_receitas)
     elif opcao == "6":
-        Receitas_Fav = []
         visualizar_favoritos(Receitas_Fav)
     elif opcao == "7":
         print("\nEncerrando o programa. Até mais!")
         break
-
-
-
-
+    else:
+        print("\nOpção inválida. Tente novamente.")
 
