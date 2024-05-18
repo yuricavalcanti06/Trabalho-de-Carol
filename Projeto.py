@@ -88,9 +88,26 @@ def favoritar_receita(lista_receitas):
                 print("\nÍndice inválido. Nenhuma receita foi favoritada.")
         else:
             print("\nEntrada inválida. Nenhuma receita foi favoritada.")
-            
-        
-   
+
+#-----------= Exlcuir dos Favoritos =-----------#
+
+def excluir_favorito(Receitas_Fav):
+    os.system('cls')
+    if len(Receitas_Fav) == 0:
+        print("\nAinda não existem receitas cadastradas nos favoritos.")
+    else:
+        visualizar_favoritos(Receitas_Fav)
+        indice = input("\nDigite o número da receita que deseja excluir: ")
+        if indice.isdigit():
+            indice = int(indice) - 1
+            if indice >=0 and indice < len(Receitas_Fav):
+                del Receitas_Fav[indice]
+                print("\nReceita excluída com sucesso!")
+            else:
+                print("\nÍndice inválido. Nenhuma receita foi excluída.")
+        else:
+            print("\nEntrada inválida. Nenhuma receita foi excluída.")
+
 #-----------= Funções do codigo(Fim) =-----------#
     
 #-----------= Listas =---------------#
@@ -108,9 +125,9 @@ while True:
     print("4. Excluir receita")
     print("5. Favoritar receita")
     print("6. Visualizar Favoritos")
-    print("7. Sair")
+    print("7. Excluir dos Favoritos")
+    print("8. Sair")
     opcao = input("\nDigite o número da opção desejada: ")
-
 
     if opcao == "1":
         cadastrar_receita(lista_receitas)
@@ -125,8 +142,10 @@ while True:
     elif opcao == "6":
         visualizar_favoritos(Receitas_Fav)
     elif opcao == "7":
+        excluir_favorito(Receitas_Fav)
+    elif opcao == "8":
         print("\nEncerrando o programa. Até mais!")
+        print("-" * 30)
         break
     else:
         print("\nOpção inválida. Tente novamente.")
-
