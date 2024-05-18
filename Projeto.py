@@ -49,22 +49,32 @@ def visualizar_receitas(lista_receitas):
                 print(f"   Ingredientes: {receita.ingredientes}")
                 print(f"   Modo de preparo: {receita.mododepreparo}")
                 print("-" * 30)
-                    
+
 #-----------= Visualizar Favoritos =-----------#
 
-def visualisar_favoritos(lista_receitas):
+def visualizar_favoritos(lista_receitas):
     os.system('cls')
     if len(Receitas_Fav) == 0:
         print("Ainda não existem receitas cadastradas nos favoritos")
     else:
         print("Favoritos:")
         for i, receita in enumerate(Receitas_Fav, start = 1):
+            print("-" * 30)
             print(f"{i}. Nome da receita: {receita.nome}")
             print(f"   País de origem: {receita.paisdeorigem}")
             print(f"   Ingredientes: {receita.ingredientes}")
             print(f"   Modo de preparo: {receita.mododepreparo}")
             print("-" * 30)
             
+#-----------= Favoritar Receita =-----------#
+
+def favoritar_receita(lista_receitas):
+    os.system('cls')
+    if len(lista_receitas) == 0:
+        print("\nAinda não existem receitas cadastradas.")
+    else:
+        visualizar_receitas(lista_receitas)
+   
 #-----------= Funções do codigo(Fim) =-----------#
     
 #-----------= Listas =---------------#
@@ -101,10 +111,12 @@ while True:
         favoritar_receita(lista_receitas)
     elif opcao == "6":
         Receitas_Fav = []
-        visualisar_favoritos(Receitas_Fav)
+        visualizar_favoritos(Receitas_Fav)
     elif opcao == "7":
         print("\nEncerrando o programa. Até mais!")
         break
+
+
 
 
 
