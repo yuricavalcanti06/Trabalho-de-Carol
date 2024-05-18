@@ -42,6 +42,13 @@ def visualizar_receitas(lista_receitas):
                     print(f"   Ingredientes: {receita.ingredientes}")
                     print(f"   Modo de preparo: {receita.mododepreparo}")
                     print("-" * 30)
+        else:
+            for i, receita in enumerate(lista_receitas, start=1):
+                print(f"{i}. Nome da receita: {receita.nome}")
+                print(f"   País de origem: {receita.paisdeorigem}")
+                print(f"   Ingredientes: {receita.ingredientes}")
+                print(f"   Modo de preparo: {receita.mododepreparo}")
+                print("-" * 30)
                     
 #-----------= Visualizar Favoritos =-----------#
 
