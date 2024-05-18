@@ -1,3 +1,5 @@
+import os
+
 class Receita:
     def __init__(self):
         self.nome = ""
@@ -5,7 +7,8 @@ class Receita:
         self.ingredientes = ""
         self.mododepreparo = ""
 
-#-----------= Cadastro =---------#
+#-----------= Cadastro =-----------#
+
 def cadastrar_receita(lista_receitas):
     os.system('cls')
     receita = Receita()
@@ -15,7 +18,9 @@ def cadastrar_receita(lista_receitas):
     receita.mododepreparo = input("Digite o modo de preparo: ")
     lista_receitas.append(receita)
     print("\nReceita cadastrada com sucesso!")
-#----------= Visualização =--------#
+    
+#-----------= Visualização =-----------#
+
 def visualizar_receitas(lista_receitas):
     os.system('cls')
     if len(lista_receitas) == 0:
@@ -34,11 +39,28 @@ def visualizar_receitas(lista_receitas):
                     print(f"   Ingredientes: {receita.ingredientes}")
                     print(f"   Modo de preparo: {receita.mododepreparo}")
                     print("-" * 30)
+                    
+#-----------= Visualizar Favoritos =-----------#
+
+def visualisar_favoritos(lista_receitas):
+    os.system('cls')
+    if len(Receitas_Fav) == 0
+        print("Ainda não existem receitas cadastradas nos favoritos")
+    else:
+    for i, receitas in enumerate(Receitas_Fav, start = 1)
+            print(f"{i}. Nome da receita: {receita.nome}")
+            print(f"   País de origem: {receita.paisdeorigem}")
+            print(f"   Ingredientes: {receita.ingredientes}")
+            print(f"   Modo de preparo: {receita.mododepreparo}")
+        
     
 #-----------= Listas =---------------#
+
 lista_receitas = []
 Receitas_Fav = []
+
 #----------= Começo do código =-----------#
+
 while True:
     print("\nMenu:")
     print("1. Cadastrar receita")
@@ -68,3 +90,7 @@ while True:
     elif opcao == "7":
         print("\nEncerrando o programa. Até mais!")
         break
+
+
+
+
