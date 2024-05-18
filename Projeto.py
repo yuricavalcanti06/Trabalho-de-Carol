@@ -36,6 +36,8 @@ def visualizar_receitas(lista_receitas):
             if len(receitas_do_pais) == 0:
                 print(f"\nAinda não existem receitas cadastradas do país {pais}.")
             else:
+                print("\nReceitas: ")
+                print("-" * 30)
                 for i, receita in enumerate(receitas_do_pais, start=1):
                     print(f"{i}. Nome da receita: {receita.nome}")
                     print(f"   País de origem: {receita.paisdeorigem}")
@@ -43,6 +45,8 @@ def visualizar_receitas(lista_receitas):
                     print(f"   Modo de preparo: {receita.mododepreparo}")
                     print("-" * 30)
         else:
+            print("\nReceitas: ")
+            print("-" * 30)
             for i, receita in enumerate(lista_receitas, start=1):
                 print(f"{i}. Nome da receita: {receita.nome}")
                 print(f"   País de origem: {receita.paisdeorigem}")
@@ -58,8 +62,8 @@ def visualizar_favoritos(Receitas_Fav):
         print("Ainda não existem receitas cadastradas nos favoritos")
     else:
         print("Favoritos:")
+        print("-" * 30)
         for i, receita in enumerate(Receitas_Fav, start = 1):
-            print("-" * 30)
             print(f"{i}. Nome da receita: {receita.nome}")
             print(f"   País de origem: {receita.paisdeorigem}")
             print(f"   Ingredientes: {receita.ingredientes}")
@@ -79,7 +83,7 @@ def favoritar_receita(lista_receitas):
             indice = int(indice) - 1
             if indice >=0 and indice < len(lista_receitas):
                 Receitas_Fav.append(lista_receitas[indice])
-                print("\nReceita adicionada com sucesso!")
+                print("\nReceita favoritada com sucesso!")
             else:
                 print("\nÍndice inválido. Nenhuma receita foi favoritada.")
         else:
