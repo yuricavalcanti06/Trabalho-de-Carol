@@ -179,8 +179,40 @@ def incluirRegistroArquivoReceita2(lista_receitas): #SOLUÇÃO PARA O FAVORITOS 
         texto += receita.nome +";"+receita.paisdeorigem+";"+receita.ingredientes+";"+receita.mododepreparo+">"
     
     file.write(texto)
-    file.close()  
+    file.close()
 
+def lerRegistrosArquivoReceita(lista_receitas):
+    file = open("receita.txt" , "r")
+    
+    for linha in file.readlines():
+        array_linha = linha.split(">")
+        for coluna in array_linha:
+            array_coluna = coluna.split(";")
+            receita = Receita()
+            if len(array_coluna) > 1: 
+               receita.nome = array_coluna[0]
+               receita.paisdeorigem = array_coluna[1]
+               receita.ingredientes = array_coluna[2]
+               receita.mododepreparo = array_coluna[3]
+               lista_receitas.append(receita) 
+           
+    file.close()    
+def lerRegistrosArquivoReceita2(Receitas_Fav):
+    file = open("favoritos.txt" , "r")
+    
+    for linha in file.readlines():
+        array_linha = linha.split(">")
+        for coluna in array_linha:
+            array_coluna = coluna.split(";")
+            receita = Receita()
+            if len(array_coluna) > 1: 
+               receita.nome = array_coluna[0]
+               receita.paisdeorigem = array_coluna[1]
+               receita.ingredientes = array_coluna[2]
+               receita.mododepreparo = array_coluna[3]
+               Receitas_Fav.append(receita) 
+           
+    file.close()    
 #-----------= Funções do codigo(Fim) =-----------#
     
 #-----------= Listas =---------------#
@@ -211,7 +243,13 @@ while True:
     elif opcao == "4":
         excluir_receita(lista_receitas)
     elif opcao == "5":
+        lista_receitas = []
+        lerRegistrosArquivoReceita(lista_receitas)
+        Receitas_Fav = []
+        lerRegistrosArquivoReceita2(Receitas_Fav)
+        limparArquivo2()
         favoritar_receita(lista_receitas)
+        incluirRegistroArquivoReceita2(Receitas_Fav)
     elif opcao == "6":
         Receitas_Fav = []
         lerRegistrosArquivoReceita2(Receitas_Fav) 
