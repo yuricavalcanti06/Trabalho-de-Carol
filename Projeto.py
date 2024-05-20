@@ -149,6 +149,38 @@ def excluir_favorito(Receitas_Fav):
         else:
             print("\nEntrada inválida. Nenhuma receita foi excluída.")
 
+#---------= Função representadora do os.remove() =---------#
+def limparArquivo():
+      #if os.path.exists("receita.txt"):
+        #   os.remove("receita.txt")
+     file = open("receita.txt" , "w")
+     file.write("")
+     file.close()
+def limparArquivo2():
+      #if os.path.exists("receita.txt"):
+        #   os.remove("receita.txt")
+     file = open("favoritos.txt" , "w")
+     file.write("")
+     file.close()
+#---------= Adicionar e Ler o arquivo txt
+def incluirRegistroArquivoReceita(lista_receitas): #SOLUÇÃO PARA O FAVORITOS N SALVAR
+    file = open("receita.txt" , "a")
+    texto = ""
+    for receita in lista_receitas:
+        texto += receita.nome +";"+receita.paisdeorigem+";"+receita.ingredientes+";"+receita.mododepreparo+">"
+    
+    file.write(texto)
+    file.close()    
+    
+def incluirRegistroArquivoReceita2(lista_receitas): #SOLUÇÃO PARA O FAVORITOS N SALVAR
+    file = open("favoritos.txt" , "a")
+    texto = ""
+    for receita in lista_receitas:
+        texto += receita.nome +";"+receita.paisdeorigem+";"+receita.ingredientes+";"+receita.mododepreparo+">"
+    
+    file.write(texto)
+    file.close()  
+
 #-----------= Funções do codigo(Fim) =-----------#
     
 #-----------= Listas =---------------#
@@ -181,9 +213,13 @@ while True:
     elif opcao == "5":
         favoritar_receita(lista_receitas)
     elif opcao == "6":
+        Receitas_Fav = []
+        lerRegistrosArquivoReceita2(Receitas_Fav) 
         visualizar_favoritos(Receitas_Fav)
     elif opcao == "7":
         excluir_favorito(Receitas_Fav)
+        limparArquivo2()
+        incluirRegistroArquivoReceita2(Receitas_Fav)
     elif opcao == "8":
         print("\nEncerrando o programa. Até mais!")
         print("-" * 30)
