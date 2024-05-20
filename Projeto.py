@@ -53,6 +53,28 @@ def visualizar_receitas(lista_receitas):
                 print(f"   Ingredientes: {receita.ingredientes}")
                 print(f"   Modo de preparo: {receita.mododepreparo}")
                 print("-" * 30)
+#--------= Atualização de receita =--------#
+def atualizar_receita(lista_receitas):
+    os.system('cls')
+    if len(lista_receitas) == 0:
+        print("\nAinda não existem receitas cadastradas.")
+    else:
+        visualizar_receitas(lista_receitas)
+        indice = input("\nDigite o número da receita que deseja atualizar: ")
+        if indice.isdigit():
+            indice = int(indice) - 1
+            if 0 <= indice < len(lista_receitas):
+                receita = lista_receitas[indice]
+                receita.nome = input("Digite o novo nome da receita: ")
+                receita.paisdeorigem = input("Digite o novo país de origem: ")
+                receita.ingredientes = input("Digite os novos ingredientes: ")
+                receita.mododepreparo = input(
+                    "Digite o novo modo de preparo: ")
+                print("\nReceita atualizada com sucesso!")
+            else:
+                print("\nÍndice inválido. Nenhuma receita foi atualizada.")
+        else:
+            print("\nEntrada inválida. Nenhuma receita foi atualizada")
    
 #-----------= Visualizar Favoritos =-----------#
 
