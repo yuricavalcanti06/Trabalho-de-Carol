@@ -75,6 +75,25 @@ def atualizar_receita(lista_receitas):
                 print("\nÍndice inválido. Nenhuma receita foi atualizada.")
         else:
             print("\nEntrada inválida. Nenhuma receita foi atualizada")
+#--------= Excluir =----------#
+def excluir_receita(lista_receitas):
+    os.system('cls')
+    if len(lista_receitas) == 0:
+        print("\nAinda não existem receitas cadastradas.")
+    else:
+        visualizar_receitas(lista_receitas)
+        try:
+            indice = input("\nDigite o número da receita que deseja excluir: ")
+        except ValueError:
+            print("Entrada inválida. Nenhuma receita foi excluída")
+        else:
+            if indice.isdigit():
+                indice = int(indice) - 1
+                if 0 <= indice < len(lista_receitas):
+                    del lista_receitas[indice]
+                    print("\nReceita excluída com sucesso!")
+                else:
+                    print("\nÍndice inválido. Nenhuma receita foi excluída.")
    
 #-----------= Visualizar Favoritos =-----------#
 
