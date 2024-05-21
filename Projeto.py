@@ -269,7 +269,11 @@ while True:
             atualizar_receita(lista_receitas)
             incluirRegistroArquivoReceita(lista_receitas)  
     elif opcao == "4":
-        excluir_receita(lista_receitas)
+            lista_receitas = []
+            lerRegistrosArquivoReceita(lista_receitas)
+            excluir_receita(lista_receitas)
+            limparArquivo()
+            incluirRegistroArquivoReceita(lista_receitas)
     elif opcao == "5":
         lista_receitas = []
         lerRegistrosArquivoReceita(lista_receitas)
