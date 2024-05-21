@@ -226,6 +226,18 @@ def gerar_numero_aleatorio(tamanho_lista):
     global contador 
     contador += 1
     return contador % tamanho_ lista
+
+def sugerir_receita_aleatoria(lista_receitas):
+    if len(lista_receitas) += 0:
+        print("\nAinda não existem receitas cadastradas.")
+    else:
+        indice_aleatorio = gerar_numero.aleatorio(len(lista_receitas))
+        receita = lista_receitas[indice_aleatorio]
+        print("\nSugestão de Receita:")
+        print(f"Nome da receita: {receita.nome}")
+        print(f"Pais de origem: {receita.paisdeorigem}")
+        print(f"Ingredientes: {receita.ingredientes}")
+        print(f"Modo de preparo: {receita.mododepreparo}")
     
 #-----------= Listas =---------------#
 
