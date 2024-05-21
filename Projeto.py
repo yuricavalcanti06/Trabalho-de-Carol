@@ -260,20 +260,22 @@ while True:
 
     if opcao == "1":
         cadastrar_receita(lista_receitas)
+        limparArquivo()
+        incluirRegistroArquivoReceita(lista_receitas)
     elif opcao == "2":
         visualizar_receitas(lista_receitas)
     elif opcao == "3":
-            lista_receitas = []
-            lerRegistrosArquivoReceita(lista_receitas)
-            limparArquivo()
-            atualizar_receita(lista_receitas)
-            incluirRegistroArquivoReceita(lista_receitas)  
+        lista_receitas = []
+        lerRegistrosArquivoReceita(lista_receitas)
+        limparArquivo()
+        atualizar_receita(lista_receitas)
+        incluirRegistroArquivoReceita(lista_receitas)  
     elif opcao == "4":
-            lista_receitas = []
-            lerRegistrosArquivoReceita(lista_receitas)
-            excluir_receita(lista_receitas)
-            limparArquivo()
-            incluirRegistroArquivoReceita(lista_receitas)
+        lista_receitas = []
+        lerRegistrosArquivoReceita(lista_receitas)
+        excluir_receita(lista_receitas)
+        limparArquivo()
+        incluirRegistroArquivoReceita(lista_receitas)
     elif opcao == "5":
         lista_receitas = []
         lerRegistrosArquivoReceita(lista_receitas)
