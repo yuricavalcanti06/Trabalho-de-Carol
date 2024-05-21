@@ -182,37 +182,45 @@ def incluirRegistroArquivoReceita2(lista_receitas): #SOLUÇÃO PARA O FAVORITOS 
     file.close()
 
 def lerRegistrosArquivoReceita(lista_receitas):
-    file = open("receita.txt" , "r")
-    
-    for linha in file.readlines():
-        array_linha = linha.split(">")
-        for coluna in array_linha:
-            array_coluna = coluna.split(";")
-            receita = Receita()
-            if len(array_coluna) > 1: 
-               receita.nome = array_coluna[0]
-               receita.paisdeorigem = array_coluna[1]
-               receita.ingredientes = array_coluna[2]
-               receita.mododepreparo = array_coluna[3]
-               lista_receitas.append(receita) 
+    try:
+        file = open("receita.txt" , "r")
+    except:
+        print("Erro")
+        return
+    else:
+        for linha in file.readlines():
+            array_linha = linha.split(">")
+            for coluna in array_linha:
+                array_coluna = coluna.split(";")
+                receita = Receita()
+                if len(array_coluna) > 1: 
+                   receita.nome = array_coluna[0]
+                   receita.paisdeorigem = array_coluna[1]
+                   receita.ingredientes = array_coluna[2]
+                   receita.mododepreparo = array_coluna[3]
+                   lista_receitas.append(receita) 
            
-    file.close()    
+        file.close()    
 def lerRegistrosArquivoReceita2(Receitas_Fav):
-    file = open("favoritos.txt" , "r")
-    
-    for linha in file.readlines():
-        array_linha = linha.split(">")
-        for coluna in array_linha:
-            array_coluna = coluna.split(";")
-            receita = Receita()
-            if len(array_coluna) > 1: 
-               receita.nome = array_coluna[0]
-               receita.paisdeorigem = array_coluna[1]
-               receita.ingredientes = array_coluna[2]
-               receita.mododepreparo = array_coluna[3]
-               Receitas_Fav.append(receita) 
+    try:
+        file = open("favoritos.txt" , "r")
+    except:
+        print("Erro")
+        return
+    else:
+        for linha in file.readlines():
+            array_linha = linha.split(">")
+            for coluna in array_linha:
+                array_coluna = coluna.split(";")
+                receita = Receita()
+                if len(array_coluna) > 1: 
+                   receita.nome = array_coluna[0]
+                   receita.paisdeorigem = array_coluna[1]
+                   receita.ingredientes = array_coluna[2]
+                   receita.mododepreparo = array_coluna[3]
+                   Receitas_Fav.append(receita) 
            
-    file.close()    
+        file.close()    
 #-----------= Funções do codigo(Fim) =-----------#
     
 #-----------= Listas =---------------#
