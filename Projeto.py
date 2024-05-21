@@ -60,21 +60,23 @@ def atualizar_receita(lista_receitas):
         print("\nAinda não existem receitas cadastradas.")
     else:
         visualizar_receitas(lista_receitas)
-        indice = input("\nDigite o número da receita que deseja atualizar: ")
-        if indice.isdigit():
-            indice = int(indice) - 1
-            if 0 <= indice < len(lista_receitas):
-                receita = lista_receitas[indice]
-                receita.nome = input("Digite o novo nome da receita: ")
-                receita.paisdeorigem = input("Digite o novo país de origem: ")
-                receita.ingredientes = input("Digite os novos ingredientes: ")
-                receita.mododepreparo = input(
-                    "Digite o novo modo de preparo: ")
-                print("\nReceita atualizada com sucesso!")
-            else:
-                print("\nÍndice inválido. Nenhuma receita foi atualizada.")
-        else:
+        try:
+            indice = input("\nDigite o número da receita que deseja atualizar: ")
+        except ValueError:
             print("\nEntrada inválida. Nenhuma receita foi atualizada")
+        else:
+            if indice.isdigit():
+                indice = int(indice) - 1
+                if 0 <= indice < len(lista_receitas):
+                    receita = lista_receitas[indice]
+                    receita.nome = input("Digite o novo nome da receita: ")
+                    receita.paisdeorigem = input("Digite o novo país de origem: ")
+                    receita.ingredientes = input("Digite os novos ingredientes: ")
+                    receita.mododepreparo = input(
+                        "Digite o novo modo de preparo: ")
+                    print("\nReceita atualizada com sucesso!")
+                else:
+                    print("\nÍndice inválido. Nenhuma receita foi atualizada.")
 #--------= Excluir =----------#
 def excluir_receita(lista_receitas):
     os.system('cls')
@@ -119,16 +121,18 @@ def favoritar_receita(lista_receitas):
         print("\nAinda não existem receitas cadastradas.")
     else:
         visualizar_receitas(lista_receitas)
-        indice = input("\nDigite o numero da receita que deseja favoritar: ")
-        if indice.isdigit():
-            indice = int(indice) - 1
-            if indice >=0 and indice < len(lista_receitas):
-                Receitas_Fav.append(lista_receitas[indice])
-                print("\nReceita favoritada com sucesso!")
-            else:
-                print("\nÍndice inválido. Nenhuma receita foi favoritada.")
+        try:
+            indice = input("\nDigite o numero da receita que deseja favoritar: ")
+        except ValueError:
+            print("Valor inserido para favoritar é inválido, nenhuma receita foi favoritada")
         else:
-            print("\nEntrada inválida. Nenhuma receita foi favoritada.")
+            if indice.isdigit():
+                indice = int(indice) - 1
+                if indice >=0 and indice < len(lista_receitas):
+                    Receitas_Fav.append(lista_receitas[indice])
+                    print("\nReceita favoritada com sucesso!")
+                else:
+                    print("\nÍndice inválido. Nenhuma receita foi favoritada.")
 
 #-----------= Exlcuir dos Favoritos =-----------#
 
@@ -138,16 +142,18 @@ def excluir_favorito(Receitas_Fav):
         print("\nAinda não existem receitas cadastradas nos favoritos.")
     else:
         visualizar_favoritos(Receitas_Fav)
-        indice = input("\nDigite o número da receita que deseja excluir: ")
-        if indice.isdigit():
-            indice = int(indice) - 1
-            if indice >=0 and indice < len(Receitas_Fav):
-                del Receitas_Fav[indice]
-                print("\nReceita excluída com sucesso!")
-            else:
-                print("\nÍndice inválido. Nenhuma receita foi excluída.")
+        try:
+            indice = input("\nDigite o número da receita que deseja excluir: ")
+        except ValueError:
+            print("Entrada inválida. Nenhuma receita foi excluída")
         else:
-            print("\nEntrada inválida. Nenhuma receita foi excluída.")
+            if indice.isdigit():
+                indice = int(indice) - 1
+                if indice >=0 and indice < len(Receitas_Fav):
+                    del Receitas_Fav[indice]
+                    print("\nReceita excluída com sucesso!")
+                else:
+                    print("\nÍndice inválido. Nenhuma receita foi excluída.")
 
 #---------= Função representadora do os.remove() =---------#
 def limparArquivo():
@@ -185,7 +191,7 @@ def lerRegistrosArquivoReceita(lista_receitas):
     try:
         file = open("receita.txt" , "r")
     except:
-        print("Erro")
+        print("Erro: Receita não existe")
         return
     else:
         for linha in file.readlines():
@@ -205,7 +211,7 @@ def lerRegistrosArquivoReceita2(Receitas_Fav):
     try:
         file = open("favoritos.txt" , "r")
     except:
-        print("Erro")
+        print("Erro: Receita de favoritos não existe")
         return
     else:
         for linha in file.readlines():
@@ -255,46 +261,54 @@ while True:
     print("5. Favoritar receita")
     print("6. Visualizar Favoritos")
     print("7. Excluir dos Favoritos")
-    print("8. Sair")
-    opcao = input("\nDigite o número da opção desejada: ")
-
-    if opcao == "1":
-        cadastrar_receita(lista_receitas)
-        limparArquivo()
-        incluirRegistroArquivoReceita(lista_receitas)
-    elif opcao == "2":
-        visualizar_receitas(lista_receitas)
-    elif opcao == "3":
-        lista_receitas = []
-        lerRegistrosArquivoReceita(lista_receitas)
-        limparArquivo()
-        atualizar_receita(lista_receitas)
-        incluirRegistroArquivoReceita(lista_receitas)  
-    elif opcao == "4":
-        lista_receitas = []
-        lerRegistrosArquivoReceita(lista_receitas)
-        excluir_receita(lista_receitas)
-        limparArquivo()
-        incluirRegistroArquivoReceita(lista_receitas)
-    elif opcao == "5":
-        lista_receitas = []
-        lerRegistrosArquivoReceita(lista_receitas)
-        Receitas_Fav = []
-        lerRegistrosArquivoReceita2(Receitas_Fav)
-        limparArquivo2()
-        favoritar_receita(lista_receitas)
-        incluirRegistroArquivoReceita2(Receitas_Fav)
-    elif opcao == "6":
-        Receitas_Fav = []
-        lerRegistrosArquivoReceita2(Receitas_Fav) 
-        visualizar_favoritos(Receitas_Fav)
-    elif opcao == "7":
-        excluir_favorito(Receitas_Fav)
-        limparArquivo2()
-        incluirRegistroArquivoReceita2(Receitas_Fav)
-    elif opcao == "8":
-        print("\nEncerrando o programa. Até mais!")
-        print("-" * 30)
-        break
-    else:
+    print("8. Sugerir Receita Aleatória")
+    print("9. Sair")
+    try:
+        opcao = input("\nDigite o número da opção desejada: ")
+    except ValueError:
         print("\nOpção inválida. Tente novamente.")
+    else:
+        if opcao == "1":
+            cadastrar_receita(lista_receitas)
+            limparArquivo()
+            incluirRegistroArquivoReceita(lista_receitas)
+        elif opcao == "2":
+            lista_receitas = []
+            lerRegistrosArquivoReceita(lista_receitas)
+            visualizar_receitas(lista_receitas)
+        elif opcao == "3":
+            lista_receitas = []
+            lerRegistrosArquivoReceita(lista_receitas)
+            limparArquivo()
+            atualizar_receita(lista_receitas)
+            incluirRegistroArquivoReceita(lista_receitas)  
+        elif opcao == "4":
+            lista_receitas = []
+            lerRegistrosArquivoReceita(lista_receitas)
+            excluir_receita(lista_receitas)
+            limparArquivo()
+            incluirRegistroArquivoReceita(lista_receitas)
+        elif opcao == "5":
+            lista_receitas = []
+            lerRegistrosArquivoReceita(lista_receitas)
+            Receitas_Fav = []
+            lerRegistrosArquivoReceita2(Receitas_Fav)
+            limparArquivo2()
+            favoritar_receita(lista_receitas)
+            incluirRegistroArquivoReceita2(Receitas_Fav)
+        elif opcao == "6":
+            Receitas_Fav = []
+            lerRegistrosArquivoReceita2(Receitas_Fav) 
+            visualizar_favoritos(Receitas_Fav)
+        elif opcao == "7":
+            excluir_favorito(Receitas_Fav)
+            limparArquivo2()
+            incluirRegistroArquivoReceita2(Receitas_Fav)
+        elif opcao == "8":
+            lista_receitas = []
+            lerRegistrosArquivoReceita(lista_receitas)
+            sugerir_receita_aleatoria(lista_receitas)
+        elif opcao == "9":
+            print("\nEncerrando o programa. Até mais!")
+            print("-" * 30)
+            break
