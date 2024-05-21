@@ -221,7 +221,11 @@ def lerRegistrosArquivoReceita2(Receitas_Fav):
                    Receitas_Fav.append(receita) 
            
         file.close()    
-#-----------= Funções do codigo(Fim) =-----------#
+#-----------= sugestão de receita =-----------#
+def gerar_numero_aleatorio(tamanho_lista):
+    global contador 
+    contador += 1
+    return contador % tamanho_ lista
     
 #-----------= Listas =---------------#
 
